@@ -39,7 +39,8 @@ void main(){vec2 aspect=vec2(u_resolution.x/u_resolution.y,1.);vec2 p=(v_uv-.5)*
 float sd=scene(p-vec2(.009,-.017));float shadow=exp(-max(sd,0.)*55.)*.19*smoothstep(-.005,.02,d);bg*=1.-shadow;
 if(d>aa){outColor=vec4(bg,1.);return;}
 float e=.00065;vec2 grad=vec2(scene(p+vec2(e,0.))-scene(p-vec2(e,0.)),scene(p+vec2(0.,e))-scene(p-vec2(0.,e)));grad=normalize(grad+vec2(.0000001));
-float bevel=mix(.008,.065,u_thickness);if(u_shape==1)bevel=.235;if(u_shape==0 && length(p-vec2(.30*aspect.x,.015)-u_pointer)<.14)bevel=.134;
+// One material profile for fixed and draggable shapes.
+float bevel=mix(.008,.065,u_thickness);
 float edge=clamp(1.+d/bevel,0.,1.);float slope=pow(edge,.62)*.96;vec3 N=normalize(vec3(grad*slope,sqrt(max(.04,1.-slope*slope))));
 float bulge=max(0.,1.-edge)*.12;vec2 flow=vec2(sin(p.y*13.+u_time*.5),cos(p.x*11.+u_time*.4))*.001*u_thickness;
 float travel=(.018+u_thickness*.12)*u_refraction;vec3 rayR=refract(vec3(0.,0.,-1.),N,1./(1.45+u_dispersion*.12));vec3 rayG=refract(vec3(0.,0.,-1.),N,1./1.45);vec3 rayB=refract(vec3(0.,0.,-1.),N,1./(1.45-u_dispersion*.12));
