@@ -34,3 +34,12 @@ WebGL2 is preferred. The studio automatically uses a Canvas2D software refractio
 ## Render deployment
 
 Create a Static Site from this repository, branch `main`, build command `true`, publish directory `.`. No environment variables, server, database, or package installation is required.
+
+
+## Shake to download
+
+Tap **Enable shake** on a phone, allow motion access when requested, then shake twice. The shortcut processes accelerometer samples locally. It requires three direction reversals above 12 m/s² within 1.2 seconds, waits 300 ms for initial sensor settling, and disarms before one source ZIP download request. An eight-second cooldown prevents immediate rearming. It resets on tab hiding/page exit and never remembers enabled state across page loads. No sensor readings are sent or saved.
+
+The iOS motion permission is requested synchronously from the enable button click. Browsers without motion support show a download link. If no valid samples arrive within ten seconds, the shortcut stops listening and provides a retry. A visible **Download source** link also appears after a shake because some mobile browsers may require a tap to accept a ZIP download or may show a download confirmation. The original header download remains available.
+
+Run sensor and permission tests with `node --test shake-download.test.mjs`. Automated tests simulate readings and browser permissions; physical iPhone sensor behaviour requires a real device check.

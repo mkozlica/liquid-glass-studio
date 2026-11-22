@@ -10,3 +10,13 @@
 .play-glyph{position:absolute;pointer-events:none;left:18%;top:74%;transform:translate(-50%,-50%);display:grid;place-items:center;line-height:1;font-size:22px;text-shadow:0 2px 5px #0005}.play-glyph svg{display:block}.play-glyph[hidden]{display:none}
 
 .icon-button{display:grid;place-items:center}.preset{font-size:13px}.sliders label{font-size:14px}.sliders output{font-size:12px}
+
+/* Optional motion shortcut, with a full-size tap target on phones. */
+.shake-shortcut{display:flex;align-items:center;gap:14px;background:#191715;border:1px solid #3b302a;border-radius:11px;padding:16px 19px;margin:0 0 24px}
+.shake-icon{color:#ff986c;display:grid;place-items:center;flex:0 0 32px}
+.shake-copy{flex:1;min-width:0}.shake-copy h2{font-size:16px;font-weight:500;letter-spacing:-.2px}.shake-copy p{color:#a6a09b;font-size:14px;line-height:1.5;margin:4px 0 0}
+.shake-copy a{display:inline-block;color:#ffb28c;font-size:14px;text-decoration:underline;text-underline-offset:3px;margin-top:7px}.shake-copy a[hidden]{display:none}
+.shake-toggle{min-height:44px;flex:0 0 auto;background:#32251e;border:1px solid #805239;border-radius:7px;padding:10px 16px;color:#ffc4a4;font-size:14px;font-weight:500}
+.shake-toggle:hover:not(:disabled){background:#453023}.shake-toggle:disabled{cursor:default;opacity:.65}.shake-toggle[aria-pressed="true"]{background:#252320;border-color:#66594f;color:#e7d9cb}
+.shake-shortcut[data-state="enabled"],.shake-shortcut[data-state="waiting"]{border-color:#97613f}
+@media(max-width:760px){.shake-shortcut{align-items:flex-start;gap:11px;flex-wrap:wrap;padding:16px;margin-bottom:20px}.shake-copy{flex-basis:calc(100% - 43px)}.shake-icon{padding-top:1px}.shake-toggle{width:100%;margin-top:1px}.shake-copy h2{font-size:16px}.shake-copy p{font-size:14px}}
